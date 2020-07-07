@@ -1,0 +1,18 @@
+$primary: #999999; 
+$white: #FAFAFA; 
+
+.result-container {
+    max-width: 70%;
+    margin: 2vw auto;
+}
+.result-container p{
+  font-size: 1.5rem;
+}
+.result-list {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-gap: 1vw 4.5vw;
+  grid-auto-rows: 10.5vw;
+  margin-top: 2vw;  
+}
+

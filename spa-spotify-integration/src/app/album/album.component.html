@@ -1,0 +1,6 @@
+<p>album works!</p>
+<div  *ngFor="let track of tracks">
+    <button (click)="playTrack(track.preview_url)">{{track.name}}</button>
+    <br>
+</div>
+<button (click)="pauseTrack()">Stop</button>

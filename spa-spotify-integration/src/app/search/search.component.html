@@ -1,0 +1,13 @@
+ 
+<div class="app">
+  <div class="image-wrapper">
+    <img src="/assets/imgs/Spotify_Icon_RGB_Green.png" alt="image">
+  </div>
+  <div class="form__group field">
+    <p class="input-title">Busque por artistas, álbuns ou músicas</p>
+    <input type="input" #term  (keyup.enter)="search(term)"  class="form__field" placeholder="Comece a escrever..." name="name" id='name' required />
+  </div>
+  <div class="img"></div>
+</div>
+ <app-album-result-list [albums]="albums"></app-album-result-list>
+ <router-outlet></router-outlet>
