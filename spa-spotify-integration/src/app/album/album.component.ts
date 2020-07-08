@@ -17,8 +17,8 @@ export class AlbumComponent implements OnInit, OnDestroy {
   ) { }
 
   tracks: any[] = [];
-  currentTrack: any;
-  album: any;
+  currentTrack;
+  album;
 
   ngOnDestroy(): void {
     this.pauseTrack(this.currentTrack);
