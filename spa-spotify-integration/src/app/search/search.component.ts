@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchService } from '../services';
+import { SearchService, SearchCacheManagerService } from '../services';
 
 @Component({
   selector: 'app-search',
@@ -8,11 +8,12 @@ import { SearchService } from '../services';
 })
 export class SearchComponent implements OnInit {
 
-  constructor(private searchService: SearchService) { }
+  constructor(private searchService: SearchService, private searchCacheManagerService: SearchCacheManagerService) { }
 
   albums: any = {};
 
   ngOnInit(): void {
+    this.albums = this.searchCacheManagerService.getLastSearchedResults();
   }
 
   search(term): void {
