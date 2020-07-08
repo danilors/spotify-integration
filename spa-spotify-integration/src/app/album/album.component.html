@@ -1,6 +1,32 @@
-<p>album works!</p>
-<div  *ngFor="let track of tracks">
+<!--
+    <div  *ngFor="let track of tracks">
     <button (click)="playTrack(track.preview_url)">{{track.name}}</button>
     <br>
 </div>
 <button (click)="pauseTrack()">Stop</button>
+-->
+<a [routerLink]="['/']">Voltar</a>
+<div class="album-container">
+    <app-album-card [album]="album"></app-album-card>
+    <div class="tracks-container">
+        <div *ngFor="let track of tracks">
+          <div class="track-item">
+           <div class="track-description">
+               <div>
+                    {{track.track_number}}. 
+               </div>
+               <div>
+                  {{track.name}}
+                </div>           
+                <div class="track-time">
+                    {{convertTime(track.duration_ms)}}
+                </div>
+                <div>
+                    <span  style="cursor: pointer;" *ngIf="track.preview_url" (click)="playTrack(track)">
+                        {{track.paused ? 'play': 'stop'}}
+                    </span>
+                </div>
+          </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+
+@import "../../styles.scss";
+
+a:link {
+    text-decoration: inherit;
+    color: inherit;
+    text-align: center;
+}
+ 
+a:visited {
+    text-decoration: inherit;
+    color: inherit;   
+}
+
+.album-container {
+    width: 80%;
+    margin: auto; 
+    margin-top: 100px;
+    display: grid;
+    color: $white;
+    grid-template-columns: 40% 60%;
+    font-family: 'Roboto Regular';
+    padding-top: 2vh;
+}
+
+.album-container div:nth-child(1){
+    justify-self: center;
+} 
+
+.album-container .image-container img {
+    width: auto;
+}
+
+.track-description {
+    display: grid;
+    grid-template-columns: 5% 75% 7% 13%;
+    grid-template-rows: 2vh;
+    padding: 0.7vh 0;
+}
+
+.track-description div:nth-child(1) {
+    align-items: center;
+    justify-self: center;
+    color: $primary
+}
+
+.track-description div:nth-child(3) {
+    align-items: center;
+    justify-self: center;
+    color: $primary
+}

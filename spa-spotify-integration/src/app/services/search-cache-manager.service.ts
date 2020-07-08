@@ -11,6 +11,9 @@ export class SearchCacheManagerService {
 
   addAlbumItem(album): void {
     const albums = this.getSearchedResults();
+    if (albums.items.find(al => al.id === album.id)) {
+      return;
+    }
     if (albums.items.length === this.CACHE_LIMIT_ITEMS) {
       albums.items.pop();
     }
@@ -23,7 +26,7 @@ export class SearchCacheManagerService {
     if (!textAlbumsObject) {
       return { items: [] };
     }
-    return JSON.parse(textAlbumsObject);;
+    return JSON.parse(textAlbumsObject);
   }
 
   getLastSearchedResults(): any {
