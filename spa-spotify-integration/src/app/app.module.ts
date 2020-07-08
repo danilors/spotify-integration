@@ -6,12 +6,12 @@ import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ArtistComponent } from './artist/artist.component';
 import { AlbumComponent } from './album/album.component';
-import { AuthGuard, UtilityService, SearchService } from './services';
+import { AuthGuard, UtilityService, SearchService, SearchCacheManagerService } from './services';
 import { SearchComponent } from './search/search.component';
 import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './notfound/notfound.component';
-import {   AuthInterceptorProvider } from './interceptors/token.interceptor';
-import { LayoutModule } from './layout-components/layout.module'; 
+import { AuthInterceptorProvider } from './interceptors/token.interceptor';
+import { LayoutModule } from './layout-components/layout.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,8 @@ import { LayoutModule } from './layout-components/layout.module';
   providers: [SearchService,
     UtilityService,
     AuthGuard,
-    AuthInterceptorProvider
+    AuthInterceptorProvider,
+    SearchCacheManagerService
   ],
   bootstrap: [AppComponent]
 })
