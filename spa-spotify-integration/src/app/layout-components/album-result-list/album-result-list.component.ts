@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core'; 
 
 @Component({
   selector: 'app-album-result-list',
@@ -17,4 +17,5 @@ export class AlbumResultListComponent implements OnInit, OnChanges {
   ngOnChanges(): void {
     console.log('albums', this.albums);
   }
+
 }

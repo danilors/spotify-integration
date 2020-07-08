@@ -2,17 +2,16 @@ $primary: #999999;
 $white: #FAFAFA; 
 
 .result-container {
-    max-width: 70%;
-    margin: 2vw auto;
+    max-width: 80%;
+    margin: 2vh auto;
 }
 .result-container p{
   font-size: 1.5rem;
 }
 .result-list {
   display: grid;
-  grid-template-columns: repeat(5, auto);
-  grid-gap: 1vw 4.5vw;
-  grid-auto-rows: 10.5vw;
-  margin-top: 2vw;  
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-gap: 30px; 
+  margin-top: 2vh;  
 }
 
