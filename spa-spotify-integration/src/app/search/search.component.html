@@ -8,5 +8,6 @@
     <input type="input" #term  (keyup.enter)="search(term)"  class="form__field" placeholder="Comece a escrever..." name="name" id='name' required />
   </div> 
 </div>
- <app-album-result-list [albums]="albums"></app-album-result-list>
+ <app-album-result-list *ngIf="recentSearched?.items.length > 0" [albums]="recentSearched" [label]="'Albuns buscados recentemente'"></app-album-result-list>
+ <app-album-result-list *ngIf="albums?.items.length > 0" [albums]="albums" [label]="'Albuns encontrados'"></app-album-result-list>
  <router-outlet></router-outlet>

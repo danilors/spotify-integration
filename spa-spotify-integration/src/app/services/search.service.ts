@@ -37,6 +37,13 @@ export class SearchService {
       .pipe(catchError(this.handleError));
   }
 
+  searchAlbumId(id: string): Observable<any> {
+    const url = `${this.baseUrl}/albums/${id}`;
+    return this.httpClient.get(url)
+      .pipe(catchError(this.handleError));
+  }
+
+  	 
   /**
    * @param  {} error
    * @returns Observable

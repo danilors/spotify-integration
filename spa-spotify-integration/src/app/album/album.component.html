@@ -9,7 +9,7 @@
 <div class="album-container">
     <app-album-card [album]="album"></app-album-card>
     <div class="tracks-container">
-        <div *ngFor="let track of tracks">
+        <div *ngFor="let track of album?.tracks">
           <div class="track-item">
            <div class="track-description">
                <div>

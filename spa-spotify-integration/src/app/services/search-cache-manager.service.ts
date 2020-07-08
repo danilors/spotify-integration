@@ -35,4 +35,14 @@ export class SearchCacheManagerService {
     return result;
   }
 
+  updateAlbum(album): void {
+    const albums = this.getSearchedResults();
+    const found = albums.items.find(al => al.id === album.id);
+    if (found) {
+      const indexOf = albums.items.indexOf(found);
+      albums.items[indexOf] = album;
+    }
+    window.localStorage.setItem(this.ALBUM_ITEMS_KEY, JSON.stringify(albums));
+  }
+
 }

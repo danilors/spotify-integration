@@ -10,10 +10,11 @@ export class SearchComponent implements OnInit {
 
   constructor(private searchService: SearchService, private searchCacheManagerService: SearchCacheManagerService) { }
 
-  albums: any = {};
+  recentSearched: any = { items: [] };
+  albums: any = { items: [] };
 
   ngOnInit(): void {
-    this.albums = this.searchCacheManagerService.getLastSearchedResults();
+    this.recentSearched = this.searchCacheManagerService.getLastSearchedResults();
   }
 
   search(term): void {

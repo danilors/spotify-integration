@@ -16,29 +16,42 @@ export class AlbumComponent implements OnInit, OnDestroy {
     private utilityService: UtilityService
   ) { }
 
-  tracks: any[] = [];
   currentTrack;
   album;
 
   ngOnDestroy(): void {
     this.pauseTrack(this.currentTrack);
-    this.tracks = [];
+
     this.currentTrack = undefined;
     this.album = undefined;
   }
 
   ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.searchService.searchAlbumTracksById(id).subscribe(result => {
-      this.tracks = result.items;
-      this.album = this.searchCacheManagerService.getSearchedResults().items.find(album => album.id === id);
-      this.tracks = this.tracks.map(t => {
-        t.paused = true;
-        return t;
+    const albumId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.album = this.searchCacheManagerService.getSearchedResults().items.find(album => album.id === albumId);
+    if (this.album) {
+      this.searchTracks(albumId);
+    } else {
+      this.searchService.searchAlbumId(albumId).subscribe(result => {
+        this.album = result;
+        this.searchTracks(albumId);
       });
-    }, error => {
-      console.log('AlbumComponent error', error);
-    });
+    }
+  }
+
+  searchTracks(albumId): void {
+    if (!this.album.tracks) {
+      this.searchService.searchAlbumTracksById(albumId).subscribe(result => {
+        this.album.tracks = result.items;
+        this.album.tracks = this.album.tracks.map(t => {
+          t.paused = true;
+          return t;
+        });
+        this.searchCacheManagerService.updateAlbum(this.album);
+      }, error => {
+        console.log('AlbumComponent error', error);
+      });
+    }
   }
 
   playTrack(track): void {
