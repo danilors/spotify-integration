@@ -8,44 +8,16 @@ import { Router } from '@angular/router';
 export class TokenInterceptorService implements HttpInterceptor {
 
     refreshTokenInProgress = false;
-    tokenRefreshedSource = new Subject();
-    tokenRefreshed$ = this.tokenRefreshedSource.asObservable();
+    tokenRefreshedSubject = new Subject();
+    tokenRefreshed$ = this.tokenRefreshedSubject.asObservable();
 
     constructor(private authenticationService: AuthenticationService, private router: Router) { }
 
-    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        //TODO talvez seja desnecessário
-        let authReq = req;
-        if (!req.url.includes('refresh_token')) {
-            authReq = this.addAuthHeader(req);
-        }
-
-        return next.handle(authReq).pipe(catchError(error => {
-            return this.handleResponseError(error, req, next);
+    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        const tokenRequest = this.addAuthHeader(request);
+        return next.handle(tokenRequest).pipe(catchError(error => {
+            return this.handleResponseError(error, request, next);
         }));
-    }
-
-    refreshToken(): Observable<any> {
-        if (this.refreshTokenInProgress) {
-            return new Observable(observer => {
-                this.tokenRefreshed$.subscribe(() => {
-                    observer.next();
-                    observer.complete();
-                });
-            });
-        } else {
-            this.refreshTokenInProgress = true;
-
-            return this.authenticationService.refreshToken().pipe(
-                tap(() => {
-                    this.refreshTokenInProgress = false;
-                    this.tokenRefreshedSource.next();
-                }),
-                catchError((e) => {
-                    this.refreshTokenInProgress = false;
-                    return throwError(e);
-                }));
-        }
     }
 
     handleResponseError(error, request?, next?: HttpHandler): Observable<HttpEvent<any>> {
@@ -61,6 +33,29 @@ export class TokenInterceptorService implements HttpInterceptor {
                 }));
         }
         return throwError(error);
+    }
+
+
+    refreshToken(): Observable<any> {
+        if (this.refreshTokenInProgress) {
+            return new Observable(observer => {
+                this.tokenRefreshed$.subscribe(() => {
+                    observer.next();
+                    observer.complete();
+                });
+            });
+        } else {
+            this.refreshTokenInProgress = true;
+            return this.authenticationService.refreshToken().pipe(
+                tap(() => {
+                    this.refreshTokenInProgress = false;
+                    this.tokenRefreshedSubject.next();
+                }),
+                catchError((e) => {
+                    this.refreshTokenInProgress = false;
+                    return throwError(e);
+                }));
+        }
     }
 
 
