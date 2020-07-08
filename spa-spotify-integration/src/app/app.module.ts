@@ -31,8 +31,8 @@ import { LayoutModule } from './layout-components/layout.module';
   providers: [SearchService,
     UtilityService,
     AuthGuard,
-    AuthInterceptorProvider,
-    SearchCacheManagerService
+    SearchCacheManagerService,
+    AuthInterceptorProvider
   ],
   bootstrap: [AppComponent]
 })
