@@ -2,25 +2,29 @@
 $primary: #999999; 
 $white: #FAFAFA; 
 
-.app {
+.search {
   display: grid;
-  grid-template-columns: 15% 70% 15%;
-    color: $white; 
+  grid-template-columns: 10% 90%;
+  color: $white; 
+}
+
+.search div:nth-child(1) {
+    display: grid;
+    justify-self: center; 
+    grid-template-columns: repeat(auto-fill, minmax(2vw, 1fr));
+    align-items: center;
 }
  
 .image-wrapper img {
     width: 3rem;
 }
-
-.app > div:nth-child(1) {
-    align-self: center;
-    justify-self: center;
-}
+ 
  
 .form__group {
   position: relative;
   padding: 15px 0 0;
-  margin-top: 10px;
+  margin-top: 10px; 
+  width: 89%;
 }
 
 .form__field {
