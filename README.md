@@ -15,7 +15,7 @@ acessar: http://localhost:4200
 
 # Run Backend
 
-Entrar no diretorio web-api-auth/authorization_code/
+Entrar no diretorio web-api-auth/
 
 inserir as credencias no arquivo app.js 
 ```sh
