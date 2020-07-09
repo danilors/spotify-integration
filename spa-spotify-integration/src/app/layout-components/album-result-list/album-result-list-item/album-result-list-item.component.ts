@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SearchCacheManagerService } from 'src/app/services';
+import { Album } from 'src/app/models';
 
 @Component({
   selector: 'app-album-result-list-item',
@@ -10,12 +11,12 @@ export class AlbumResultListItemComponent implements OnInit {
 
   constructor(private searchCacheManagerService: SearchCacheManagerService) { }
   @Input()
-  item: any;
+  item: Album;
 
   ngOnInit(): void {
   }
 
-  saveSearchItem(album): void {
+  saveSearchItem(album: Album): void {
     this.searchCacheManagerService.addAlbumItem(album);
   }
 

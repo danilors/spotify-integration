@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { UtilityService } from './utility.service';
-
+import { SearchResponse } from '../models';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +13,7 @@ export class SearchService {
 
   constructor(private httpClient: HttpClient, private utilityService: UtilityService) { }
 
-  search(value: string): Observable<any> {
+  search(value: string): Observable<SearchResponse> {
     const parametersObject = {
       type: 'album,artist,track',
       q: value,
@@ -42,8 +42,7 @@ export class SearchService {
     return this.httpClient.get(url)
       .pipe(catchError(this.handleError));
   }
-
-  	 
+ 
   /**
    * @param  {} error
    * @returns Observable

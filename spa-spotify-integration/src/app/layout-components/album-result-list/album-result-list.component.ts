@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Albums } from 'src/app/models';
 
 @Component({
   selector: 'app-album-result-list',
@@ -10,7 +11,7 @@ export class AlbumResultListComponent implements OnInit {
   constructor() { }
 
   @Input()
-  albums: any = {};
+  albums: Albums;
 
   @Input()
   label: string;

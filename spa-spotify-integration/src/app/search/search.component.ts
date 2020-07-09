@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService, SearchCacheManagerService } from '../services';
+import { SearchResponse, Albums } from '../models';
 
 @Component({
   selector: 'app-search',
@@ -10,8 +11,8 @@ export class SearchComponent implements OnInit {
 
   constructor(private searchService: SearchService, private searchCacheManagerService: SearchCacheManagerService) { }
 
-  recentSearched: any = { items: [] };
-  albums: any = { items: [] };
+  recentSearched: Albums = { items: [] };
+  albums: Albums = { items: [] };
 
   ngOnInit(): void {
     this.recentSearched = this.searchCacheManagerService.getLastSearchedResults();
@@ -21,7 +22,7 @@ export class SearchComponent implements OnInit {
     const value = term.value;
     if (value) {
       term.value = '';
-      this.searchService.search(value).subscribe(result => {
+      this.searchService.search(value).subscribe((result: SearchResponse) => {
         this.albums = result.albums;
       }, error => {
         console.log(error);

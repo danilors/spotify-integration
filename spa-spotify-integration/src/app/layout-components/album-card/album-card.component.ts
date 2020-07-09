@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Album } from 'src/app/models';
 
 @Component({
   selector: 'app-album-card',
@@ -10,7 +11,7 @@ export class AlbumCardComponent implements OnInit {
   constructor() { }
 
   @Input()
-  album: any = {};
+  album: Album;
 
   @Input()
   fullImage = false;

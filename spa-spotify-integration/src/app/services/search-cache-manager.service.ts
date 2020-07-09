@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Albums, Album } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,8 @@ export class SearchCacheManagerService {
   private CACHE_LIMIT_ITEMS = 10;
   constructor() { }
 
-  addAlbumItem(album): void {
-    const albums = this.getSearchedResults();
+  addAlbumItem(album: Album): void {
+    const albums: Albums = this.getSearchedResults();
     if (albums.items.find(al => al.id === album.id)) {
       return;
     }
@@ -21,22 +22,22 @@ export class SearchCacheManagerService {
     window.localStorage.setItem(this.ALBUM_ITEMS_KEY, JSON.stringify(albums));
   }
 
-  getSearchedResults(): any {
-    const textAlbumsObject: any = window.localStorage.getItem(this.ALBUM_ITEMS_KEY);
+  getSearchedResults(): Albums {
+    const textAlbumsObject: string = window.localStorage.getItem(this.ALBUM_ITEMS_KEY);
     if (!textAlbumsObject) {
       return { items: [] };
     }
     return JSON.parse(textAlbumsObject);
   }
 
-  getLastSearchedResults(): any {
-    const result = this.getSearchedResults();
+  getLastSearchedResults(): Albums {
+    const result: Albums = this.getSearchedResults();
     result.items.reverse();
     return result;
   }
 
-  updateAlbum(album): void {
-    const albums = this.getSearchedResults();
+  updateAlbum(album: Album): void {
+    const albums: Albums = this.getSearchedResults();
     const found = albums.items.find(al => al.id === album.id);
     if (found) {
       const indexOf = albums.items.indexOf(found);
