@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TokenManagerService, UtilityService } from './';
+import { TokenManagerService } from './token-manager.service';
 import { TokenContent } from '../models';
 import { Router } from '@angular/router';
 import { Observable, Subscriber } from 'rxjs';
