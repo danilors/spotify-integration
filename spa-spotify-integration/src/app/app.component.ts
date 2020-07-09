@@ -6,15 +6,13 @@ import { TokenContent } from './models';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
-  title = 'spa-spotify-integration';
- 
+export class AppComponent implements OnInit {
 
-  constructor(private searchService: SearchService, private utilityService: UtilityService){
+  constructor() {
 
   }
-  ngOnInit() {
-    console.log('AppComponent: ngOnInit');
+  ngOnInit(): void {
+
   }
- 
+
 }

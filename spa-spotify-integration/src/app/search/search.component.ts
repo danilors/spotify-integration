@@ -9,7 +9,9 @@ import { SearchResponse, Albums } from '../models';
 })
 export class SearchComponent implements OnInit {
 
-  constructor(private searchService: SearchService, private searchCacheManagerService: SearchCacheManagerService) { }
+  constructor(
+    private searchService: SearchService,
+    private searchCacheManagerService: SearchCacheManagerService) { }
 
   recentSearched: Albums = { items: [] };
   albums: Albums = { items: [] };

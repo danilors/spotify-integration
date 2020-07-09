@@ -14,7 +14,10 @@ export class ArtistComponent implements OnInit {
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log('ArtistComponent: ngOnInit');
+    this.start();
+  }
+
+  start(): void {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     this.searchService.searchArtistById(id).subscribe(result => {
       console.log('ArtistComponent result', result);

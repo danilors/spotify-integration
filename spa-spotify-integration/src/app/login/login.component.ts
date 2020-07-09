@@ -14,6 +14,9 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
+    this.start();
+  }
+  start(): void {
     const accessToken = this.activatedRoute.snapshot.paramMap.get('access_token');
     const refreshToken = this.activatedRoute.snapshot.paramMap.get('refresh_token');
     if (this.activatedRoute.snapshot.paramMap.has('access_token')) {
@@ -23,7 +26,5 @@ export class LoginComponent implements OnInit {
       };
       this.authenticationService.login(token);
     }
-
   }
-
 }

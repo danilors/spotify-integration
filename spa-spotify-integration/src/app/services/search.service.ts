@@ -42,11 +42,7 @@ export class SearchService {
     return this.httpClient.get(url)
       .pipe(catchError(this.handleError));
   }
- 
-  /**
-   * @param  {} error
-   * @returns Observable
-   */
+
   handleError(error): Observable<any> {
     return throwError(error.message);
   }
