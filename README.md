@@ -18,6 +18,9 @@ inserir as credencias no arquivo app.js
 const client_id = ''; // Your client id
 const client_secret = ''; // Your secret
 ```
-
+```sh
 - npm install
+```
+```sh
 - npm start
+```
