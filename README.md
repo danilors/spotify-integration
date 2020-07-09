@@ -10,6 +10,14 @@ Entrar no diretorio spa-spotify-integration/
 acessar: http://localhost:4200
 
 # Run Back
+
 Entrar no diretorio web-api-auth/authorization_code/
+
+inserir as credencias no arquivo app.js 
+```sh
+const client_id = ''; // Your client id
+const client_secret = ''; // Your secret
+```
+
 - npm install
 - npm start
