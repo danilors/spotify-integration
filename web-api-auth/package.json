@@ -3,7 +3,8 @@
   "name": "web-api-auth",
   "description": "Basic Spotify authorization flows through OAuth 2",
   "scripts": {
-    "debug": "node ./authorization_code/app.js"
+    "debug": "node ./authorization_code/app.js",
+    "start": "node ./authorization_code/app.js"
   },
   "version": "0.0.2",
   "dependencies": {

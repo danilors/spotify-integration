@@ -12,4 +12,4 @@ acessar: http://localhost:4200
 # Run Back
 Entrar no diretorio web-api-auth/authorization_code/
 - npm install
-- node app.js
+- npm start
