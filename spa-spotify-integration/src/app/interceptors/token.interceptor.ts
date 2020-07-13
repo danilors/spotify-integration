@@ -16,11 +16,11 @@ export class TokenInterceptorService implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const tokenRequest = this.addAuthHeader(request);
         return next.handle(tokenRequest).pipe(catchError(error => {
-            return this.handleResponseError(error, request, next);
+            return this.handleExpiredTokenError(error, request, next);
         }));
     }
 
-    handleResponseError(error, request?, next?: HttpHandler): Observable<HttpEvent<any>> {
+    handleExpiredTokenError(error, request?, next?: HttpHandler): Observable<HttpEvent<any>> {
         if (error.status === 401 && error.error.error.message === 'The access token expired') {
             return this.refreshToken().pipe(
                 switchMap(() => {
@@ -29,7 +29,7 @@ export class TokenInterceptorService implements HttpInterceptor {
                 }),
                 catchError(e => {
                     this.authenticationService.logout();
-                    return this.handleResponseError(e);
+                    return this.handleExpiredTokenError(e);
                 }));
         }
         return throwError(error);
