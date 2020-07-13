@@ -5,7 +5,7 @@
   </div>
   <div class="form__group field">
     <p class="input-title">Busque por artistas, álbuns ou músicas</p>
-    <input type="input" #term  (keyup.enter)="search(term)"  class="form__field" placeholder="Comece a escrever..." name="name" id='name' required />
+    <input type="input" #term  (keyup.enter)="search(term)" autocomplete="off"  class="form__field" placeholder="Comece a escrever..." name="name" id='name' required />
   </div> 
 </div>
  <app-album-result-list *ngIf="recentSearched?.items.length > 0" [albums]="recentSearched" [label]="'Albuns buscados recentemente'"></app-album-result-list>

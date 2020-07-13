@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AlbumResultListItemComponent } from './album-result-list-item.component';
+import { Album } from '../../../models';
 
 describe('AlbumResultListItemComponent', () => {
   let component: AlbumResultListItemComponent;

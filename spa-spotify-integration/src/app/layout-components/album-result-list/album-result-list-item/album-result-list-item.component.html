@@ -1,5 +1,5 @@
 <div class="result-list-item">
-    <a [routerLink]="['album', item.id]" (click)="saveSearchItem(item)">
+    <a [routerLink]="['album', item?.id]" (click)="saveSearchItem(item)">
          <app-album-card [album]="item" [fullImage]="true"></app-album-card>
     </a>
 </div>

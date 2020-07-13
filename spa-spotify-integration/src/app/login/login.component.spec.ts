@@ -8,7 +8,14 @@ describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 
-  let activatedRouteMock: any = {};
+  let activatedRouteMock: any = {
+    snapshot: {
+      paramMap: {
+        get: (param: string) => param,
+        has: () => true
+      }
+    }
+  };
   let authenticationServiceMock: any = {};
 
   beforeEach(async(() => {
@@ -26,20 +33,20 @@ describe('LoginComponent', () => {
       ]
     })
       .compileComponents();
-
     authenticationServiceMock = TestBed.inject(AuthenticationService);
     activatedRouteMock = TestBed.inject(ActivatedRoute);
-
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
+    component.start = jasmine.createSpy('start').and.callThrough();
     fixture.detectChanges();
-    
+
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  //authenticationServiceMock.login = jasmine.createSpy('login').and.callThrough();
 });

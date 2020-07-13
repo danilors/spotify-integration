@@ -1,10 +1,4 @@
-<!--
-    <div  *ngFor="let track of tracks">
-    <button (click)="playTrack(track.preview_url)">{{track.name}}</button>
-    <br>
-</div>
-<button (click)="pauseTrack()">Stop</button>
--->
+ 
 <a [routerLink]="['/']">Voltar</a>
 <div class="album-container">
     <app-album-card [album]="album"></app-album-card>
@@ -22,7 +16,7 @@
                     {{convertTime(track.duration_ms)}}
                 </div>
                 <div>
-                    <span  style="cursor: pointer;" *ngIf="track.preview_url" (click)="playTrack(track)">
+                    <span  style="cursor: pointer;" *ngIf="track.preview_url" (click)="playPauseTrack(track)">
                         {{track.paused ? 'play': 'stop'}}
                     </span>
                 </div>

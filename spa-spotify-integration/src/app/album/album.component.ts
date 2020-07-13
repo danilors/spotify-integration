@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SearchService, UtilityService } from '../services';
 import { ActivatedRoute } from '@angular/router';
 import { SearchCacheManagerService } from '../services';
+import { Album } from '../models';
 @Component({
   selector: 'app-album',
   templateUrl: './album.component.html',
@@ -18,21 +19,27 @@ export class AlbumComponent implements OnInit, OnDestroy {
 
   currentTrack;
   album;
+  error;
 
   ngOnDestroy(): void {
-    this.pauseTrack(this.currentTrack);
+    this.pauseTrack();
 
     this.currentTrack = undefined;
     this.album = undefined;
   }
 
   ngOnInit(): void {
+    this.start();
+  }
+
+  start(): void {
+
     const albumId = this.activatedRoute.snapshot.paramMap.get('id');
     this.album = this.searchCacheManagerService.getSearchedResults().items.find(album => album.id === albumId);
     if (this.album) {
       this.searchTracks(albumId);
     } else {
-      this.searchService.searchAlbumId(albumId).subscribe(result => {
+      this.searchService.searchAlbumId(albumId).subscribe((result: Album) => {
         this.album = result;
         this.searchTracks(albumId);
       });
@@ -40,7 +47,7 @@ export class AlbumComponent implements OnInit, OnDestroy {
   }
 
   searchTracks(albumId): void {
-    if (!this.album.tracks) {
+    if (this.album && !this.album.tracks) {
       this.searchService.searchAlbumTracksById(albumId).subscribe(result => {
         this.album.tracks = result.items;
         this.album.tracks = this.album.tracks.map(t => {
@@ -49,26 +56,28 @@ export class AlbumComponent implements OnInit, OnDestroy {
         });
         this.searchCacheManagerService.updateAlbum(this.album);
       }, error => {
+        this.error = error;
         console.log('AlbumComponent error', error);
       });
     }
   }
 
-  playTrack(track): void {
-    if (this.currentTrack && track.preview_url === this.currentTrack.src) {
-      this.pauseTrack(this.currentTrack);
-      track.paused = this.currentTrack.paused;
-      return;
+  playPauseTrack(track): void {
+
+    if (!this.currentTrack) {
+      this.currentTrack = new Audio(track.preview_url);
+      this.currentTrack.play();
+      track.paused = false;
+    } else {
+      this.pauseTrack();
+      track.paused = true;
     }
-    this.pauseTrack(this.currentTrack);
-    this.currentTrack = new Audio(track.preview_url);
-    this.currentTrack.play();
-    track.paused = this.currentTrack.paused;
   }
 
-  pauseTrack(track): void {
-    if (track) {
-      track.pause();
+  private pauseTrack(): void {
+    if (this.currentTrack) {
+      this.currentTrack.pause();
+      this.currentTrack = undefined;
     }
   }
 

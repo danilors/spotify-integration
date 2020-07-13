@@ -16,8 +16,9 @@ import { AlbumCardComponent } from './album-card/album-card.component';
     AppRoutingModule
   ],
   exports: [
-      AlbumResultListComponent,
-     AlbumResultListItemComponent,
-    AlbumCardComponent]
+    AlbumResultListComponent,
+    AlbumResultListItemComponent,
+    AlbumCardComponent
+  ]
 })
 export class LayoutModule { }
