@@ -1,0 +1,68 @@
+@import "../../styles.scss";
+
+a:link {
+  text-decoration: inherit;
+  color: inherit;
+  text-align: center;
+}
+
+a:visited {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+.album-container {
+  width: 100%;
+  margin: auto;
+  margin-top: 100px;
+  display: grid;
+  color: $white;
+  grid-template-columns: 1fr;
+
+  font-family: "Roboto Regular";
+  padding-top: 2vh;
+
+  @media screen and (min-width: 1200px) {
+    width: 80%;
+    grid-template-columns: 40% 60%;
+  }
+}
+
+.album-container div:nth-child(1) {
+  justify-self: center;
+}
+
+.album-container .image-container img {
+  width: auto;
+}
+.tracks-container {
+  margin-top: 20px;
+  padding: 1.5vh 2vw;
+   font-family: 'Roboto Regular';
+  @media screen and (min-width: 1200px) {
+    margin-top: 0px;
+  }
+}
+.track-item {
+  display: grid;
+    grid-template-columns: 10% 62% 10% 0%;
+    grid-column-gap: 2.5vw;
+    grid-auto-rows: 5vh;
+    font-size: 13px;
+  @media screen and (min-width: 1200px) {
+    grid-template-columns: 2% 70% 5% 5%;
+    grid-column-gap: 0.5vw;
+    grid-auto-rows: 2.5vh;
+     font-size: 18px;
+  }
+}
+
+.button {
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px; 
+  font-family: 'Roboto Regular';
+}

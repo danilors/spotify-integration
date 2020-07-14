@@ -1,0 +1,25 @@
+$primary: #999999; 
+$white: #FAFAFA; 
+
+.result-list-item { 
+  color: $white;
+  font-size: 5rem;
+}
+
+ 
+.result-list-item p{
+    font-size: .9rem;
+}
+
+.result-list-item a:link {
+    text-decoration: inherit;
+    color: inherit;
+    text-align: center;
+}
+
+ 
+
+.result-list-item a:visited {
+    text-decoration: inherit;
+    color: inherit;
+}

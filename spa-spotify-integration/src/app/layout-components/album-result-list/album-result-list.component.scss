@@ -1,0 +1,17 @@
+
+@import "../../../styles.scss";
+
+.result-container {
+    max-width: 80%;
+    margin: 2vh auto;
+}
+.result-container p{
+  font-size: 1.5rem;
+}
+.result-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-gap: 30px; 
+  margin-top: 2vh;  
+}
+

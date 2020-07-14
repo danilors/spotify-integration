@@ -1,0 +1,28 @@
+
+@import "../../../styles.scss";
+
+.image-container {
+    text-align: center;
+}
+
+.image-container.full-image img {
+    width: 100%;
+    // min-height: 29.5vh;
+}
+
+.image-container p {
+    text-align: center;
+    margin-top: 1vh;
+  
+}
+
+.image-container .album-name {
+    font-size: 18px;
+    color: $white
+}
+
+.image-container .artist-name { 
+    font-size: 14px;
+    color: $primary; 
+}
+
