@@ -2,22 +2,29 @@
 Este projeto tem como objetivo realizar a integração com APIs do spotify
 
 
-# Run front
+# Run frontend
 Entrar no diretorio spa-spotify-integration/
-- npm install
-- npm start
+```sh
+  npm install
+```
+```sh
+  npm start
+```
 
 acessar: http://localhost:4200
 
-# Run Back
+# Run Backend
 
-Entrar no diretorio web-api-auth/authorization_code/
+Entrar no diretorio web-api-auth/
 
 inserir as credencias no arquivo app.js 
 ```sh
 const client_id = ''; // Your client id
 const client_secret = ''; // Your secret
 ```
-
-- npm install
-- npm start
+```sh
+  npm install
+```
+```sh
+  npm start
+```
