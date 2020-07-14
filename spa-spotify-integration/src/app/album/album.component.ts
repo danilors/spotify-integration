@@ -63,15 +63,13 @@ export class AlbumComponent implements OnInit, OnDestroy {
   }
 
   playPauseTrack(track): void {
-
     if (!this.currentTrack) {
       this.currentTrack = new Audio(track.preview_url);
       this.currentTrack.play();
-      track.paused = false;
     } else {
       this.pauseTrack();
-      track.paused = true;
     }
+    track.paused = !track.paused;
   }
 
   private pauseTrack(): void {

@@ -1,12 +1,11 @@
  
-<a [routerLink]="['/']">Voltar</a>
+<a class="button" [routerLink]="['/']">Voltar</a>
 <div class="album-container">
     <app-album-card [album]="album"></app-album-card>
     <div class="tracks-container">
         <div *ngFor="let track of album?.tracks">
           <div class="track-item">
-           <div class="track-description">
-               <div>
+             <div>
                     {{track.track_number}}. 
                </div>
                <div>
@@ -20,7 +19,6 @@
                         {{track.paused ? 'play': 'stop'}}
                     </span>
                 </div>
-          </div>
         </div>
     </div>
 </div>
