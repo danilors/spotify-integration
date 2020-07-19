@@ -1,5 +1,5 @@
 # spotify-integration
-Este projeto tem como objetivo realizar a integração com APIs do spotify
+Este projeto tem como objetivo demonstrar a integração entre um aplicativo Angular com APIs do Spotify
 
 
 # Run frontend
@@ -28,6 +28,6 @@ const client_secret = ''; // Your secret
 ```sh
   npm start
 ```
-
-[Acessar App no Heroku](https://spa-spotify-integration-1987.herokuapp.com) 
+# App implantada no Heroku
+[spa-spotify-integration](https://spa-spotify-integration-1987.herokuapp.com) 
  
