@@ -4,6 +4,7 @@ import { TokenContent } from '../models';
 import { Router } from '@angular/router';
 import { Observable, Subscriber } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -37,7 +38,7 @@ export class AuthenticationService {
       refresh_token: token.refresh_token
     };
     return new Observable((subscriber: Subscriber<any>) => {
-      return this.httpClient.post('http://localhost:8888/refresh_token', body).subscribe((response: any) => {
+      return this.httpClient.post(`${environment.authApiBaseUrl}/refresh_token`, body).subscribe((response: any) => {
         token.access_token = response.access_token;
         this.tokenManager.save(token);
         subscriber.next();

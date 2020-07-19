@@ -1,28 +1,27 @@
- $primary: #999999; 
-$white: #fafafa; 
+@import "~normalize.css";
+
+$primary: #999999;
+$white: #fafafa;
 
 @font-face {
   font-family: "Roboto Regular";
-  src: url(assets/fonts/Roboto-Regular.ttf) format("truetype"),
+  src: url(assets/fonts/Roboto-Regular.ttf) format("truetype");
 }
-
- 
 
 @font-face {
   font-family: "Roboto Bold";
-  src: url(assets/fonts/Roboto-Bold.ttf) format("truetype"),
+  src: url(assets/fonts/Roboto-Bold.ttf) format("truetype");
 }
-
 
 @font-face {
   font-family: "Roboto Medium";
-  src: url(assets/fonts/Roboto-Medium.ttf) format("truetype"),
+  src: url(assets/fonts/Roboto-Medium.ttf) format("truetype");
 }
 
 body {
   min-height: 100vh;
   font-size: 1.5rem;
-  background-color:#161616;
-  color: #FAFAFA;
-  font-family: 'Roboto Regular';
+  background-color: #161616;
+  color: #fafafa;
+  font-family: "Roboto Regular";
 }

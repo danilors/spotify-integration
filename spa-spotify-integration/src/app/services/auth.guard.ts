@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { AuthenticationService } from './authentication.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class AuthGuard implements CanActivate {
     if (this.authentication.isLoggedIn()) {
       return true;
     } else {
-      window.open('http://localhost:8888/login', '_self');
+      window.open(`${environment.authApiBaseUrl}/login`, '_self');
       return false;
     }
   }
