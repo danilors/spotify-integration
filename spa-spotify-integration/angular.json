@@ -28,8 +28,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "src/reset.scss"
+              "src/styles.scss" 
             ],
             "scripts": []
           },
@@ -61,7 +60,14 @@
                   "maximumError": "10kb"
                 }
               ]
-            }
+            },
+             "heroku": {
+            "fileReplacements": [
+              {
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.heroku.ts"
+              }
+            ]
           }
         },
         "serve": {
@@ -72,6 +78,9 @@
           "configurations": {
             "production": {
               "browserTarget": "spa-spotify-integration:build:production"
+            },
+             "heroku": {
+              "browserTarget": "your-project-name:build:heroku"
             }
           }
         },
