@@ -28,6 +28,6 @@ const client_secret = ''; // Your secret
 ```sh
   npm start
 ```
-# App implantada no Heroku
+### App implantada no Heroku
 [spa-spotify-integration](https://spa-spotify-integration-1987.herokuapp.com) 
  
